@@ -39,7 +39,7 @@ class MovieDetails extends React.Component{
       return <div class="main">
         <div class="header">
         <span>Movie Details</span>
-        <Link to="/"><img src={homeLogo} alt="home logo" /></Link></div>
+        <Link to="/list"><img src={homeLogo} alt="home logo" /></Link></div>
         <div class="details-body">
         <div class="movie-poster"><img src={`https://image.tmdb.org/t/p/w500${this.state.movieDetails.poster_path}`} alt="moviePoster" class="moviePoster"></img>
         </div>

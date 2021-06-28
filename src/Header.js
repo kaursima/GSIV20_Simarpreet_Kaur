@@ -48,7 +48,7 @@ class Header extends React.Component{
       return <div class="main">
           <div class="header">
       <input type="text" placeholder="Search" onInput={this.handleChange.bind(this)}></input>
-      <Link to="/"><img src={homeLogo} alt="home logo" /></Link></div>
+      <Link to="/list"><img src={homeLogo} alt="home logo" /></Link></div>
       <div class="list-body">
       <List obj={this.state.data} />
       </div>
