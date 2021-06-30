@@ -1,31 +1,31 @@
 import React from 'react';
 import './index.css';
-import homeLogo from './static/Home.png'
 import { Link } from 'react-router-dom';
+import homeLogo from './static/Home.png';
 
 const apiKey = "1fbec0cb91cd2469e96f871badde99f8";
 
 
-class MovieDetails extends React.Component{
+class Details extends React.Component{
     constructor(props)
     {
         super(props);
         
-        this.state = {movieId : this.props.match.params.movieId, movieDetails: [], castDetails : []}
+        this.state = {movieDetails: [], castDetails : []}
     }
 
   render() {
-    fetch(`https://api.themoviedb.org/3/movie/${this.state.movieId}?api_key=${apiKey}&language=en-US`).then(response => response.json()).then(data => {
-        this.setState({movieDetails : data});
+    const movieId = this.props.match.params.movieId;
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`).then(response => response.json()).then(data => {
+                this.setState({movieDetails : data});
     });
-    fetch(`https://api.themoviedb.org/3/movie/${this.state.movieId}/credits?api_key=${apiKey}&language=en-US`).then(response => response.json()).then(data => {
-        this.setState({castDetails : data});
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}&language=en-US`).then(response => response.json()).then(data => {
+                this.setState({castDetails : data});
     });
         const year = String(this.state.movieDetails.release_date).slice(0,4);
         const data = this.state.castDetails.crew;
         let director = "";
         let cast = [];
-        console.log(data)
         for(const i in data)
         {
             if(data[i].job === "Director")
@@ -34,10 +34,10 @@ class MovieDetails extends React.Component{
             }
             cast.push(data[i].name);
         }
-      return <div class="main">
+        return <div class="main">
         <div class="header">
         <span>Movie Details</span>
-        <Link to="/list"><img src={homeLogo} alt="home logo" /></Link></div>
+        <Link to="/movies"><img src={homeLogo} alt="home logo" /></Link></div>
         <div class="details-body">
         <div class="movie-poster"><img src={`https://image.tmdb.org/t/p/w500${this.state.movieDetails.poster_path}`} alt="moviePoster" class="moviePoster"></img>
         </div>
@@ -63,4 +63,4 @@ class MovieDetails extends React.Component{
         </div>
   }
 }
-export default MovieDetails;
+export default Details;
