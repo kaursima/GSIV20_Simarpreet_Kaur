@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Show(props)
 {
     return props.obj.map(item => {
-    return <div key={item.id} class="items"><Link to = {`/details/${item.id}`} obj={item}>
+    return <div key={item.id} class="items"><Link to = {`/movies/details/${item.id}`} obj={item}>
       <div class="heading">
         <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="posterImage" class="posterImg"></img>
         <div class="heading-container">
