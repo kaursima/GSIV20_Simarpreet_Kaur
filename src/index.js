@@ -8,8 +8,8 @@ function App() {
     return (
         <Router>
             <Switch>
-                <Route exact path="/list" component={Home} />
-                <Route exact path="/details/:movieId" component={MovieDetails} />
+                <Route exact path="/movies" component={Home} />
+                <Route exact path="movies/details/:movieId" component={MovieDetails} />
             </Switch>
         </Router>
     );
